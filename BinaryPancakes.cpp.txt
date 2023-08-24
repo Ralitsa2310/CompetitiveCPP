@@ -1,0 +1,67 @@
+#include<bits/stdc++.h>
+using namespace std;
+int funk(int c, int* arr, int no)
+{
+    int br=0;
+    for(int k=0; k<no; k++)
+    {
+        br+=c/arr[k];
+    }
+    return br;
+}
+int main()
+{
+    int pan=0, co=0;
+    cin>>pan>>co;
+    int nag=-1;
+    int arr[co];
+    for(int i=0; i<co; i++)
+    {
+        cin>>arr[i];
+        if(nag<arr[i])
+        {
+            nag=arr[i];
+        }
+    }
+    int lim=nag*pan;
+    int cen=0, r=lim, l=1, brp=0, broj=0;
+    while(true)
+    {
+        cen=(r+l)/2;
+        brp=funk(cen,arr,co);
+        
+        if(l<r)
+        {
+        if(brp==pan)
+        {
+            
+            break;
+        }
+        else
+        {
+            if(brp>pan)
+            {
+                r=cen-1;
+            }
+            else
+            {
+                l=cen+1;
+            }
+        }
+        }
+        else
+        {
+            break;
+            
+        }
+    }
+    if(brp<pan)
+    {
+        cout<<cen+1<<endl;
+    }
+    else
+    {
+        cout<<cen<<endl;
+    }
+    return 0;
+}
